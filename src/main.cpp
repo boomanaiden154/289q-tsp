@@ -1,11 +1,16 @@
 #include <iostream>
+#include <vector>
 
 #include "DataLoader.h"
+#include "TSPUtils.h"
 
 int main() {
   std::map<std::pair<int, int>, float> TSPInstance =
       loadDataFromFile("./data/1000_euclidianDistance.txt");
-  for (int i = 1; i < 50; ++i) {
-    std::cout << TSPInstance[std::make_pair(i, 2)] << "\n";
+  std::vector<int> BasicPath;
+  for (int i = 1; i <= 1000; ++i) {
+    BasicPath.push_back(i);
   }
+  float TotalCost = computeCost(TSPInstance, BasicPath);
+  std::cout << TotalCost << "\n";
 }
