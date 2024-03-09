@@ -18,4 +18,5 @@ int main() {
   std::vector<int> GreedyPath = solveTSPNearestNeighbor(TSPInstance);
   float GreedyCost = computeCost(TSPInstance, GreedyPath);
   std::cout << GreedyCost << "\n";
+  std::cout << validatePath(GreedyPath, 1000) << "\n";
 }

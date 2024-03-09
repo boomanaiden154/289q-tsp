@@ -7,3 +7,5 @@
 
 float computeCost(const std::map<std::pair<int, int>, float> &TSPInstance,
                   const std::vector<int> &ProposedPath);
+
+bool validatePath(const std::vector<int> &ProposedPath, int NodeCount);
