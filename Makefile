@@ -13,6 +13,9 @@ TSPUtils.o: src/TSPUtils.cpp include/TSPUtils.h
 TSPAlgorithms.o: src/TSPAlgorithms.cpp include/TSPAlgorithms.h
 	clang++ -g -O3 src/TSPAlgorithms.cpp -I include -c -o src/TSPAlgorithms.o
 
+TSPGenerator: src/TSPGenerator.cpp
+	clang++ -g -O3 src/TSPGenerator.cpp -o TSPGenerator
+
 clean:
 	rm src/*.o
 	rm main
