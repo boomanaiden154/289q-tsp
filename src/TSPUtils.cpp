@@ -1,6 +1,7 @@
 #include "TSPUtils.h"
 
 #include <unordered_map>
+#include <iostream>
 
 float computeCost(const std::map<std::pair<int, int>, float> &TSPInstance,
                   const std::vector<int> &ProposedPath) {

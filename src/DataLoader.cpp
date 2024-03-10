@@ -30,7 +30,7 @@ std::map<std::pair<int, int>, float> loadDataFromFile(std::string FilePath) {
     int Node2 = std::stoi(Node2Number);
     float DistanceFloat = std::stof(Distance);
     Output[std::make_pair(Node1, Node2)] = DistanceFloat;
-    Output[std::make_pair(Node2, Node1)] = DistanceFloat;
+    //Output[std::make_pair(Node2, Node1)] = DistanceFloat;
   }
   return Output;
 }

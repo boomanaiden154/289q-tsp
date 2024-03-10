@@ -1,17 +1,22 @@
-all: main.o DataLoader.o TSPUtils.o TSPAlgorithms.o
+all: src/main.o src/DataLoader.o src/TSPUtils.o src/TSPAlgorithms.o
 	clang++ -g -O3 src/main.o src/DataLoader.o src/TSPUtils.o src/TSPAlgorithms.o -o main
 
-main.o: src/main.cpp
+src/main.o: src/main.cpp
 	clang++ -g -O3 src/main.cpp -I include -c -o src/main.o
 
-DataLoader.o: src/DataLoader.cpp include/DataLoader.h
+src/DataLoader.o: src/DataLoader.cpp include/DataLoader.h
 	clang++ -g -O3 src/DataLoader.cpp -I include -c -o src/DataLoader.o
 
-TSPUtils.o: src/TSPUtils.cpp include/TSPUtils.h
+src/TSPUtils.o: src/TSPUtils.cpp include/TSPUtils.h
 	clang++ -g -O3 src/TSPUtils.cpp -I include -c -o src/TSPUtils.o
 
-TSPAlgorithms.o: src/TSPAlgorithms.cpp include/TSPAlgorithms.h
+src/TSPAlgorithms.o: src/TSPAlgorithms.cpp include/TSPAlgorithms.h
 	clang++ -g -O3 src/TSPAlgorithms.cpp -I include -c -o src/TSPAlgorithms.o
+
+unittests: unittests/TSPAlgorithms.unittest
+
+unittests/TSPAlgorithms.unittest: unittests/TSPAlgorithms.cpp src/TSPAlgorithms.o
+	clang++ -g -O3 unittests/TSPAlgorithms.cpp src/TSPAlgorithms.o -I include -lgtest -o unittests/TSPAlgorithms.unittest
 
 clean:
 	rm src/*.o
