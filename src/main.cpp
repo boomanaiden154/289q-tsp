@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 #include "DataLoader.h"
 #include "TSPAlgorithms.h"
@@ -15,8 +16,14 @@ int main() {
   BasicPath.push_back(1);
   float TotalCost = computeCost(TSPInstance, BasicPath);
   std::cout << TotalCost << "\n";
-  std::vector<int> GreedyPath = solveTSPNearestNeighbor(TSPInstance);
+  std::vector<int> GreedyPath = solveTSPNearestNeighbor(TSPInstance, 1000);
   float GreedyCost = computeCost(TSPInstance, GreedyPath);
   std::cout << GreedyCost << "\n";
+  std::cout << "size:" << GreedyPath.size() << "\n";
   std::cout << validatePath(GreedyPath, 1000) << "\n";
+
+  std::ofstream blah("/test.txt");
+  for (int Test : GreedyPath) {
+    blah << Test << "\n";
+  }
 }

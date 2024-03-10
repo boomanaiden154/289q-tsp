@@ -5,4 +5,5 @@
 #include <vector>
 
 std::vector<int> solveTSPNearestNeighbor(
-    const std::map<std::pair<int, int>, float> &TSPInstance);
+    const std::map<std::pair<int, int>, float> &TSPInstance,
+    int ProblemSize);
