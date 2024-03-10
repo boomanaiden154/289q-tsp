@@ -1,13 +1,12 @@
 #include "TSPAlgorithms.h"
 
+#include <algorithm>
+#include <iostream>
 #include <limits>
 #include <unordered_map>
-#include <iostream>
-#include <algorithm>
 
 std::vector<int> solveTSPNearestNeighbor(
-    const std::map<std::pair<int, int>, float> &TSPInstance,
-    int ProblemSize) {
+    const std::map<std::pair<int, int>, float> &TSPInstance, int ProblemSize) {
   std::unordered_map<int, bool> VisitedNodes;
   for (int I = 1; I <= ProblemSize; ++I) {
     VisitedNodes[I] = false;
@@ -41,23 +40,28 @@ std::vector<int> solveTSPNearestNeighbor(
 }
 
 void twoSwap(std::vector<int> &CurrentRoute, int X, int Y) {
-  std::reverse(CurrentRoute.begin()+X, CurrentRoute.begin()+Y);
+  std::reverse(CurrentRoute.begin() + X, CurrentRoute.begin() + Y);
 }
 
-std::vector<int> ImproveTour(const std::map<std::pair<int,int>, float> &TSPInstance,
+std::vector<int> ImproveTour(
+    const std::map<std::pair<int, int>, float> &TSPInstance,
     const std::vector<int> PreviousSolution, int ProblemSize) {
   std::vector<int> ToReturn(PreviousSolution);
   for (int X = 1; X < PreviousSolution.size() - 1; ++X) {
     for (int Y = 1; Y < PreviousSolution.size() - 1; ++Y) {
       if (X - Y >= -1 && X - Y <= 1) continue;
-      const int EdgeXNodeA = ToReturn[X-1];
+      const int EdgeXNodeA = ToReturn[X - 1];
       const int EdgeXNodeB = ToReturn[X];
-      const int EdgeYNodeA = ToReturn[Y-1];
+      const int EdgeYNodeA = ToReturn[Y - 1];
       const int EdgeYNodeB = ToReturn[Y];
-      const float EdgeXDistance = TSPInstance.at(std::make_pair(EdgeXNodeA, EdgeXNodeB));
-      const float EdgeYDistance = TSPInstance.at(std::make_pair(EdgeYNodeA, EdgeYNodeB));
-      const float Edge1NewDistance = TSPInstance.at(std::make_pair(EdgeXNodeA, EdgeYNodeA));
-      const float Edge2NewDistance = TSPInstance.at(std::make_pair(EdgeXNodeB, EdgeYNodeB));
+      const float EdgeXDistance =
+          TSPInstance.at(std::make_pair(EdgeXNodeA, EdgeXNodeB));
+      const float EdgeYDistance =
+          TSPInstance.at(std::make_pair(EdgeYNodeA, EdgeYNodeB));
+      const float Edge1NewDistance =
+          TSPInstance.at(std::make_pair(EdgeXNodeA, EdgeYNodeA));
+      const float Edge2NewDistance =
+          TSPInstance.at(std::make_pair(EdgeXNodeB, EdgeYNodeB));
       if (EdgeXDistance + EdgeYDistance > Edge1NewDistance + Edge2NewDistance) {
         twoSwap(ToReturn, X, Y);
       }

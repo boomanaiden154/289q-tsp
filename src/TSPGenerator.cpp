@@ -11,10 +11,11 @@ int main(int argc, char** argv) {
 
   std::random_device RandomDevice;
   std::mt19937 RandomNumberGenerator(RandomDevice());
-  std::uniform_real_distribution<float> Distribution(1.0,50.0);
+  std::uniform_real_distribution<float> Distribution(1.0, 50.0);
   for (int X = 1; X <= ProblemSize; ++X) {
     for (int Y = X + 1; Y <= ProblemSize; ++Y) {
-      std::cout << X << " " << Y << " " << Distribution(RandomNumberGenerator) << "\n";
+      std::cout << X << " " << Y << " " << Distribution(RandomNumberGenerator)
+                << "\n";
     }
   }
 }

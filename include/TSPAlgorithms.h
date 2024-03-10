@@ -5,10 +5,8 @@
 #include <vector>
 
 std::vector<int> solveTSPNearestNeighbor(
-    const std::map<std::pair<int, int>, float> &TSPInstance,
-    int ProblemSize);
+    const std::map<std::pair<int, int>, float> &TSPInstance, int ProblemSize);
 
 std::vector<int> ImproveTour(
     const std::map<std::pair<int, int>, float> &TSPInstance,
-    const std::vector<int> PreviousSolution,
-    int ProblemSize);
+    const std::vector<int> PreviousSolution, int ProblemSize);

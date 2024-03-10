@@ -1,6 +1,6 @@
+#include <fstream>
 #include <iostream>
 #include <vector>
-#include <fstream>
 
 #include "DataLoader.h"
 #include "TSPAlgorithms.h"
@@ -13,11 +13,15 @@ int main() {
   std::vector<int> NNPath = solveTSPNearestNeighbor(TSPInstance, ProblemSize);
   float NNCost = computeCost(TSPInstance, NNPath);
   std::cout << "nearest neighbor cost:" << NNCost << "\n";
-  std::cout << "nearest neighbor valid:" << validatePath(NNPath, ProblemSize) << "\n";
+  std::cout << "nearest neighbor valid:" << validatePath(NNPath, ProblemSize)
+            << "\n";
 
-  std::vector<int> OptimizedPath = ImproveTour(TSPInstance, NNPath, ProblemSize);
-  std::cout << "optimized path cost: " << computeCost(TSPInstance, OptimizedPath) << "\n";
-  std::cout << "optimized path valid: " << validatePath(OptimizedPath, ProblemSize) << "\n";
+  std::vector<int> OptimizedPath =
+      ImproveTour(TSPInstance, NNPath, ProblemSize);
+  std::cout << "optimized path cost: "
+            << computeCost(TSPInstance, OptimizedPath) << "\n";
+  std::cout << "optimized path valid: "
+            << validatePath(OptimizedPath, ProblemSize) << "\n";
 
   std::ofstream OutputHandle("/tour_output.txt");
   for (int Test : OptimizedPath) {
